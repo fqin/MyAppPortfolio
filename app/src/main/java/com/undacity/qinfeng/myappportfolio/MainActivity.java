@@ -20,6 +20,7 @@ import java.util.zip.Inflater;
 public class MainActivity extends ActionBarActivity {
 
     private ListView appList;
+    private Toast toast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +71,15 @@ public class MainActivity extends ActionBarActivity {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getContext(),"This button will launch "+app.getName()+" app!", Toast.LENGTH_SHORT).show();
-                    }
+
+                        if(toast!=null){
+                            toast.cancel();
+                        }
+                        toast =Toast.makeText(getContext(), "This button will launch " + app.getName() + " app!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        }
+
+
                 });
             }
 
